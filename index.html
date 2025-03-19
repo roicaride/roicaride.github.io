@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafolio de [Tu Nombre], profesional de Data Science." />
+  <title>Portafolio - [Tu Nombre]</title>
+  <!-- Fuente de Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Iconos de Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Hoja de estilos CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navegación principal -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">[Tu Nombre]</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <!-- Icono para menú móvil -->
+      <div class="menu-toggle" id="menu-icon" aria-label="Abrir menú de navegación">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Sección Home -->
+  <section id="home">
+    <div class="home-content">
+      <div class="home-text">
+        <h1>¡Hola! Soy <span class="name">[Tu Nombre]</span></h1>
+        <p class="tagline">Científico de Datos con experiencia en Machine Learning, IoT, Electrónica y Finanzas.</p>
+      </div>
+      <!-- Imagen representativa o foto de perfil (reemplazar la ruta con la de tu propia foto) -->
+      <div class="home-image">
+        <img src="images/profile.jpg" alt="Foto de [Tu Nombre] - Data Scientist" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección About Me -->
+  <section id="about" class="hidden">
+    <h2>Sobre Mí</h2>
+    <p>Soy un profesional de Data Science con varios años de experiencia aplicando técnicas de <strong>Machine Learning</strong> para resolver problemas del mundo real. He trabajado en el desarrollo e implementación de modelos predictivos y sistemas inteligentes que transforman datos en información útil.</p>
+    <p>También cuento con una sólida formación en <strong>IoT (Internet of Things)</strong> y <strong>electrónica</strong>, lo que me ha permitido integrar sensores y dispositivos conectados en proyectos de análisis de datos para capturar información del mundo físico.</p>
+    <p>Además, poseo una marcada <strong>visión económico-financiera</strong>, gracias a mi experiencia en el sector financiero. Esto me ayuda a comprender el impacto de los datos y modelos en términos de negocio, asegurando que las soluciones tecnológicas aporten verdadero valor en contextos comerciales y de mercado.</p>
+  </section>
+
+  <!-- Sección Projects -->
+  <section id="projects" class="hidden">
+    <h2>Proyectos</h2>
+    <p>Haz clic en un proyecto para ver más detalles:</p>
+    <div class="projects-grid">
+      <!-- Tarjeta de Proyecto 1 -->
+      <div class="project-card">
+        <h3>Predicción de Ventas con ML</h3>
+        <p class="small-desc">Modelo de Machine Learning para pronóstico de ventas.</p>
+        <div class="project-details">
+          <p>Proyecto enfocado en el sector retail, donde se desarrolló un modelo de regresión para predecir ventas mensuales con altos niveles de precisión. Se utilizaron Python, scikit-learn y técnicas de <em>forecasting</em> para ayudar a la empresa a optimizar su inventario.</p>
+        </div>
+      </div>
+      <!-- Tarjeta de Proyecto 2 -->
+      <div class="project-card">
+        <h3>Monitor IoT para Agricultura</h3>
+        <p class="small-desc">Sistema IoT para monitorear condiciones en tiempo real.</p>
+        <div class="project-details">
+          <p>Proyecto de IoT que integra sensores de humedad y temperatura conectados a una plataforma en la nube. Desarrollé tanto el hardware con microcontroladores Arduino como la plataforma de análisis de datos para brindar a los agricultores información en tiempo real y alertas tempranas. Incluye un panel web desarrollado con JavaScript para visualizar datos históricos.</p>
+        </div>
+      </div>
+      <!-- Tarjeta de Proyecto 3 -->
+      <div class="project-card">
+        <h3>Análisis Financiero Automatizado</h3>
+        <p class="small-desc">Dashboard de análisis de datos financieros con automatización.</p>
+        <div class="project-details">
+          <p>Implementación de un dashboard interactivo para el análisis de indicadores financieros de una empresa. Utilicé Python (Pandas, Matplotlib) para automatizar la recopilación y limpieza de datos, y una interfaz web con HTML/CSS/JS para visualizar tendencias, comparativos y proyecciones, facilitando la toma de decisiones estratégicas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Contact -->
+  <section id="contact" class="hidden">
+    <h2>Contacto</h2>
+    <p>Si deseas ponerte en contacto conmigo, por favor completa el siguiente formulario o encuentra mis redes a continuación:</p>
+    <div class="contact-container">
+      <!-- Formulario de Contacto -->
+      <form action="https://formspree.io/f/mwplpjay" method="POST" class="contact-form">
+        <div class="form-field">
+          <input type="text" name="nombre" placeholder="Tu Nombre" required />
+        </div>
+        <div class="form-field">
+          <input type="email" name="_replyto" placeholder="Tu Email" required />
+        </div>
+        <div class="form-field">
+          <textarea name="mensaje" placeholder="Tu Mensaje" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+      <!-- Información de contacto y redes sociales (actualizar enlaces con tus perfiles reales) -->
+      <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:roicaride4@gmail.com">roicaride4@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/tuusuario" target="_blank">/in/roicarideborrajo</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/tuusuario" target="_blank">/roicaride</a></p>
+        <div class="social-links">
+          <a href="mailto:roicaride4@gmail.com" aria-label="Email" class="social-link email" target="_blank"><i class="fas fa-envelope"></i></a>
+          <a href="https://linkedin.com/in/roi-caride-borrajo-1167a4227" aria-label="LinkedIn" class="social-link linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/tuusuario" aria-label="GitHub" class="social-link github" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Archivo JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

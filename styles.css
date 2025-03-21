@@ -687,6 +687,29 @@ section {
     text-decoration: none;
 }
 
+.github-icon:hover {
+    color: #1B98E0;
+    transform: scale(1.1) rotate(360deg);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(27, 152, 224, 0.3);
+}
+
+.github-icon::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1B98E0, #00ff88);
+    opacity: 0;
+    transition: all 0.4s ease;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.github-icon:hover::before {
+    opacity: 0.2;
+}
+
 /* Project Description */
 .project-description {
     font-size: 1.1em;
@@ -947,17 +970,33 @@ section {
 
 /* Responsive Design for Contact */
 @media (max-width: 768px) {
+    #contact {
+        padding: 40px 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
     .contact-container {
         grid-template-columns: 1fr;
         gap: 30px;
+        padding: 0;
+        width: 100%;
     }
 
     .contact-form {
-        padding: 30px;
+        padding: 25px;
+        width: 100%;
     }
 
     .info-card {
         padding: 20px;
+        width: 100%;
+    }
+
+    .form-field input,
+    .form-field textarea {
+        width: 100%;
+        padding: 12px;
     }
 }
 

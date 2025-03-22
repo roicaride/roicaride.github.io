@@ -87,6 +87,15 @@ h2::after {
 
 .logo-icon {
     font-size: 1.8rem;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-icon:hover {
+    animation: none;
+    transform: scale(1.2);
 }
 
 .nav-links {
@@ -1103,4 +1112,40 @@ html, body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
+}
+
+/* Animations */
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes glowText {
+  0% { text-shadow: 0 0 10px rgba(27, 152, 224, 0); }
+  50% { text-shadow: 0 0 20px rgba(27, 152, 224, 0.5); }
+  100% { text-shadow: 0 0 10px rgba(27, 152, 224, 0); }
+}
+
+/* Section titles animation */
+section h2 {
+    position: relative;
+}
+
+/* Hello wave emoji animation */
+.intro .wave-emoji {
+  display: inline-block;
+  animation: wave 2.5s infinite;
+  transform-origin: 70% 70%;
 }

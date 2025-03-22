@@ -70,7 +70,7 @@
     <section id="home" itemscope itemtype="http://schema.org/Person">
         <div class="home-content">
             <div class="home-text">
-                <p class="intro animate-text">Hello👋, I'm</p>
+                <p class="intro animate-text">Hello<span class="wave-emoji">👋</span>, I'm</p>
                 <h1 class="animate-text" itemprop="name">Roi Caride</h1>
                 <p class="job-title animate-text" itemprop="jobTitle">Student of Business and Technology</p>
                 <p class="description animate-text" itemprop="description">
@@ -300,18 +300,22 @@
                     <div class="info-icon">
                         <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                     </div>
-                    <h3>Location</h3>
-                    <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                        <span itemprop="addressLocality">Madrid</span>, 
-                        <span itemprop="addressCountry">Spain</span>
-                    </p>
+                    <div class="info-content">
+                        <h3>Location</h3>
+                        <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                            <span itemprop="addressLocality">Galicia</span>, 
+                            <span itemprop="addressCountry">Spain</span>
+                        </p>
+                    </div>
                 </div>
                 <div class="info-card">
                     <div class="info-icon">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <i class="fab fa-telegram" aria-hidden="true"></i>
                     </div>
-                    <h3>Phone</h3>
-                    <p itemprop="telephone">+34 123 456 789</p>
+                    <div class="info-content">
+                        <h3>Telegram</h3>
+                        <p itemprop="sameAs">@roicaride</p>
+                    </div>
                 </div>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/roi-caride-borrajo-1167a4227" target="_blank" class="social-icon" itemprop="sameAs">
@@ -322,7 +326,7 @@
                         <i class="fab fa-github" aria-hidden="true"></i>
                         <span class="tooltip">GitHub</span>
                     </a>
-                    <a href="mailto:roicaride4@gmail.com" class="social-icon">
+                    <a href="mailto:roicaride4@gmail.com" class="social-icon" itemprop="email">
                         <i class="fas fa-envelope" aria-hidden="true"></i>
                         <span class="tooltip">Email</span>
                     </a>

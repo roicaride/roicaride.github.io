@@ -91,6 +91,7 @@ h2::after {
     animation: float 3s ease-in-out infinite;
     cursor: pointer;
     transition: transform 0.3s ease;
+    pointer-events: all;
 }
 
 .logo-icon:hover {
@@ -219,7 +220,7 @@ section {
     position: relative;
     z-index: 2;
     overflow: hidden;
-    pointer-events: none;
+    pointer-events: all;
 }
 
 /* Text Animations */
@@ -251,14 +252,14 @@ section {
     align-items: center;
     gap: 2rem;
     position: relative;
-    pointer-events: none;
+    pointer-events: all;
 }
 
 .home-text {
     flex: 1;
     text-align: left;
     position: relative;
-    pointer-events: auto;
+    pointer-events: all;
     max-width: 600px;
 }
 
@@ -1148,4 +1149,6 @@ section h2 {
   display: inline-block;
   animation: wave 2.5s infinite;
   transform-origin: 70% 70%;
+  pointer-events: all;
+  cursor: default;
 }

@@ -136,6 +136,9 @@ h2::after {
     color: #fff;
     cursor: pointer;
     transition: transform 0.3s ease;
+    background: transparent;
+    border: none;
+    padding: 10px;
 }
 
 .menu-toggle:hover {
@@ -157,6 +160,9 @@ h2::after {
     .menu-toggle {
         display: block;
         margin-left: auto;
+        background: transparent;
+        border: none;
+        padding: 10px;
     }
 
     .nav-links {

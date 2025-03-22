@@ -4,14 +4,35 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Roi Caride, Data Science Professional." />
-  <meta name="keywords" content="Roi Caride, Business Technology, Developer, Machine Learning, IoT, Innovation" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Roi Caride - Business & Technology Professional | Portfolio</title>
+  <meta name="title" content="Roi Caride - Business & Technology Professional | Portfolio">
+  <meta name="description" content="Portfolio of Roi Caride, a Business and Technology student specializing in Machine Learning, IoT, and Innovation. Discover my projects and expertise in technology solutions." />
+  <meta name="keywords" content="Roi Caride, Business Technology, Developer, Machine Learning, IoT, Innovation, Portfolio, Madrid, Technology Student, USC" />
   <meta name="author" content="Roi Caride" />
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://roicaride.github.io/">
+  <meta property="og:title" content="Roi Caride - Business & Technology Professional">
+  <meta property="og:description" content="Portfolio of Roi Caride, a Business and Technology student specializing in Machine Learning, IoT, and Innovation.">
+  <meta property="og:image" content="https://roicaride.github.io/images/picture1.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://roicaride.github.io/">
+  <meta property="twitter:title" content="Roi Caride - Business & Technology Professional">
+  <meta property="twitter:description" content="Portfolio of Roi Caride, a Business and Technology student specializing in Machine Learning, IoT, and Innovation.">
+  <meta property="twitter:image" content="https://roicaride.github.io/images/picture1.png">
+
   <meta name="theme-color" content="#1B98E0" />
   
-  <title>Portfolio - Roi Caride</title>
   <!-- Website Icon -->
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://roicaride.github.io/">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <!-- Font Awesome Icons (CDN) -->
@@ -26,289 +47,293 @@
   <div id="particles-js"></div>
 
   <header>
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
       <div class="logo">
         <span class="logo-text">Roi Caride</span>
-        <span class="logo-icon">👨‍💻</span>
+        <span class="logo-icon" role="img" aria-label="Developer emoji">👨‍💻</span>
       </div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> About Me</a></li>
-        <li><a href="#projects" class="nav-link"><i class="fas fa-code"></i> Projects</a></li>
-        <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+      <ul class="nav-links" id="nav-links" role="menubar">
+        <li role="none"><a href="#home" class="nav-link" role="menuitem"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+        <li role="none"><a href="#about" class="nav-link" role="menuitem"><i class="fas fa-user" aria-hidden="true"></i> About Me</a></li>
+        <li role="none"><a href="#projects" class="nav-link" role="menuitem"><i class="fas fa-code" aria-hidden="true"></i> Projects</a></li>
+        <li role="none"><a href="#contact" class="nav-link" role="menuitem"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a></li>
       </ul>
-      <div class="menu-toggle" id="menu-icon" aria-label="Open navigation menu">
-        <i class="fas fa-bars"></i>
-      </div>
+      <button class="menu-toggle" id="menu-icon" aria-label="Open navigation menu">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
     </nav>
   </header>
 
-<!-- Home Section -->
-<section id="home">
-    <div class="home-content">
-        <!-- Text Container -->
-        <div class="home-text">
-            <p class="intro animate-text">Hello👋, I'm</p>
-            <h1 class="animate-text">Roi Caride</h1>
-            <p class="job-title animate-text">Student of Business and Technology</p>
-            <p class="description animate-text">
-                Developing innovative solutions that combine technology and business
-            </p>
-            <a href="#contact" class="btn-contact animate-text">
-                <i class="fas fa-envelope btn-icon"></i>
-                Contact Me
-            </a>
-            <div class="social-links animate-text">
-                <a href="https://www.linkedin.com/in/roi-caride-borrajo-1167a4227" target="_blank" class="social-icon">
-                    <i class="fab fa-linkedin"></i>
-                    <span class="tooltip">LinkedIn</span>
+  <main>
+    <!-- Home Section -->
+    <section id="home" itemscope itemtype="http://schema.org/Person">
+        <div class="home-content">
+            <div class="home-text">
+                <p class="intro animate-text">Hello👋, I'm</p>
+                <h1 class="animate-text" itemprop="name">Roi Caride</h1>
+                <p class="job-title animate-text" itemprop="jobTitle">Student of Business and Technology</p>
+                <p class="description animate-text" itemprop="description">
+                    Developing innovative solutions that combine technology and business
+                </p>
+                <a href="#contact" class="btn-contact animate-text">
+                    <i class="fas fa-envelope btn-icon" aria-hidden="true"></i>
+                    Contact Me
                 </a>
-                <a href="https://github.com/roicaride" target="_blank" class="social-icon">
-                    <i class="fab fa-github"></i>
-                    <span class="tooltip">GitHub</span>
-                </a>
-                <a href="mailto:roicaride4@gmail.com" class="social-icon">
-                    <i class="fas fa-envelope"></i>
-                    <span class="tooltip">Email</span>
-                </a>
-                <a href="https://t.me/roicaride" target="_blank" class="social-icon">
-                    <i class="fab fa-telegram"></i>
-                    <span class="tooltip">Telegram</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Profile Image -->
-        <div class="home-image">
-            <div class="image-container">
-                <img src="images/picture1.png" alt="Roi Caride">
-                <div class="image-overlay"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-  <!-- About Me Section -->
-<section id="about" class="hidden">
-    <h2>About Me</h2>
-
-    <div class="about-container">
-        <!-- Text Column -->
-        <div class="about-text">
-            <p>🚀 <strong>Innovation in Technology and Business</strong></p>
-            <p>
-                As a <strong>Business and Technology</strong> student at the 
-                <strong>University of Santiago de Compostela</strong>, I combine 
-                <strong>Machine Learning 🤖, IoT 🌐, and electronics ⚡</strong> to create 
-                solutions that transform ideas into reality.
-            </p>
-
-            <p>💡 <strong>Comprehensive Development</strong></p>
-            <p>
-                My approach integrates <strong>software development, physical prototyping 🛠️, 
-                and data analysis 📊</strong>. From <strong>robotics and automation</strong> 
-                to <strong>financial analysis</strong>, each project seeks the balance 
-                between innovation and practical value.
-            </p>
-
-            <p>🎯 <strong>Future Vision</strong></p>
-            <p>
-                My goal is to <strong>develop solutions that make a difference</strong>, 
-                combining <strong>cutting-edge technology</strong> with 
-                <strong>economic sustainability</strong>. I believe in innovation that 
-                transforms and technology that empowers.
-            </p>
-        </div>
-
-        <!-- Image Column -->
-        <div class="about-image">
-            <img src="images/picture2.webp" alt="Roi Caride">
-        </div>
-    </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="hidden">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-            <div class="project-header">
-                <h3>Financial Market Analyzer</h3>
-                <a href="https://github.com/roicaride/financial-analyzer" target="_blank" class="github-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <p class="project-description">Advanced financial analysis platform that combines real-time market data with machine learning to predict market trends and provide investment insights.</p>
-            <div class="project-skills">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Pandas</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">Financial APIs</span>
-            </div>
-        </div>
-        
-        <!-- Project 2 -->
-        <div class="project-card">
-            <div class="project-header">
-                <h3>EcoSmart City</h3>
-                <a href="https://github.com/roicaride/ecosmart-city" target="_blank" class="github-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <p class="project-description">Sustainable city management system that optimizes energy consumption, waste management, and traffic flow using IoT sensors and AI algorithms.</p>
-            <div class="project-skills">
-                <span class="skill-tag">IoT</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Arduino</span>
-                <span class="skill-tag">Cloud Computing</span>
-            </div>
-        </div>
-        
-        <!-- Project 3 -->
-        <div class="project-card">
-            <div class="project-header">
-                <h3>AR Learning Platform</h3>
-                <a href="https://github.com/roicaride/ar-learning" target="_blank" class="github-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <p class="project-description">Interactive educational platform using Augmented Reality to create immersive learning experiences for complex subjects like anatomy and physics.</p>
-            <div class="project-skills">
-                <span class="skill-tag">Unity</span>
-                <span class="skill-tag">C#</span>
-                <span class="skill-tag">AR Foundation</span>
-                <span class="skill-tag">3D Modeling</span>
-            </div>
-        </div>
-    </div>
-    <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-            <div class="project-header">
-                <h3>Financial Market Analyzer</h3>
-                <a href="https://github.com/roicaride/financial-analyzer" target="_blank" class="github-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <p class="project-description">Advanced financial analysis platform that combines real-time market data with machine learning to predict market trends and provide investment insights.</p>
-            <div class="project-skills">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Pandas</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">Financial APIs</span>
-            </div>
-        </div>
-        
-        <!-- Project 2 -->
-        <div class="project-card">
-            <div class="project-header">
-                <h3>EcoSmart City</h3>
-                <a href="https://github.com/roicaride/ecosmart-city" target="_blank" class="github-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <p class="project-description">Sustainable city management system that optimizes energy consumption, waste management, and traffic flow using IoT sensors and AI algorithms.</p>
-            <div class="project-skills">
-                <span class="skill-tag">IoT</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Arduino</span>
-                <span class="skill-tag">Cloud Computing</span>
-            </div>
-        </div>
-        
-        <!-- Project 3 -->
-        <div class="project-card">
-            <div class="project-header">
-                <h3>AR Learning Platform</h3>
-                <a href="https://github.com/roicaride/ar-learning" target="_blank" class="github-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <p class="project-description">Interactive educational platform using Augmented Reality to create immersive learning experiences for complex subjects like anatomy and physics.</p>
-            <div class="project-skills">
-                <span class="skill-tag">Unity</span>
-                <span class="skill-tag">C#</span>
-                <span class="skill-tag">AR Foundation</span>
-                <span class="skill-tag">3D Modeling</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-  <!-- Contact Section -->
-<section id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-container">
-        <div class="contact-form">
-            <form>
-                <div class="form-field">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Your name" required>
-                </div>
-                <div class="form-field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Your email" required>
-                </div>
-                <div class="form-field">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" placeholder="Message subject" required>
-                </div>
-                <div class="form-field">
-                    <label for="message">Message</label>
-                    <textarea id="message" placeholder="Your message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">
-                    <span class="btn-text">Send Message</span>
-                    <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
-                </button>
-            </form>
-        </div>
-        <div class="contact-info">
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div class="info-content">
-                    <h3>Email</h3>
-                    <p>roicaride4@gmail.com</p>
+                <div class="social-links animate-text">
+                    <a href="https://www.linkedin.com/in/roi-caride-borrajo-1167a4227" target="_blank" class="social-icon" itemprop="sameAs">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="tooltip">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/roicaride" target="_blank" class="social-icon" itemprop="sameAs">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <span class="tooltip">GitHub</span>
+                    </a>
+                    <a href="mailto:roicaride4@gmail.com" class="social-icon" itemprop="email">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span class="tooltip">Email</span>
+                    </a>
+                    <a href="https://t.me/roicaride" target="_blank" class="social-icon" itemprop="sameAs">
+                        <i class="fab fa-telegram" aria-hidden="true"></i>
+                        <span class="tooltip">Telegram</span>
+                    </a>
                 </div>
             </div>
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class="fas fa-map-marker-alt"></i>
+
+            <div class="home-image">
+                <div class="image-container">
+                    <img src="images/picture1.png" alt="Roi Caride - Business and Technology Professional" itemprop="image">
+                    <div class="image-overlay"></div>
                 </div>
-                <h3>Location</h3>
-                <p>Madrid, Spain</p>
-            </div>
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class="fas fa-phone"></i>
-                </div>
-                <h3>Phone</h3>
-                <p>+34 123 456 789</p>
-            </div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/roi-caride-borrajo-1167a4227" target="_blank" class="social-icon">
-                    <i class="fab fa-linkedin"></i>
-                    <span class="tooltip">LinkedIn</span>
-                </a>
-                <a href="https://github.com/roicaride" target="_blank" class="social-icon">
-                    <i class="fab fa-github"></i>
-                    <span class="tooltip">GitHub</span>
-                </a>
-                <a href="mailto:roicaride4@gmail.com" class="social-icon">
-                    <i class="fas fa-envelope"></i>
-                    <span class="tooltip">Email</span>
-                </a>
-                <a href="https://t.me/roicaride" target="_blank" class="social-icon">
-                    <i class="fab fa-telegram"></i>
-                    <span class="tooltip">Telegram</span>
-                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="hidden">
+        <h2>About Me</h2>
+
+        <div class="about-container">
+            <!-- Text Column -->
+            <div class="about-text">
+                <p>🚀 <strong>Innovation in Technology and Business</strong></p>
+                <p>
+                    As a <strong>Business and Technology</strong> student at the 
+                    <strong>University of Santiago de Compostela</strong>, I combine 
+                    <strong>Machine Learning 🤖, IoT 🌐, and electronics ⚡</strong> to create 
+                    solutions that transform ideas into reality.
+                </p>
+
+                <p>💡 <strong>Comprehensive Development</strong></p>
+                <p>
+                    My approach integrates <strong>software development, physical prototyping 🛠️, 
+                    and data analysis 📊</strong>. From <strong>robotics and automation</strong> 
+                    to <strong>financial analysis</strong>, each project seeks the balance 
+                    between innovation and practical value.
+                </p>
+
+                <p>🎯 <strong>Future Vision</strong></p>
+                <p>
+                    My goal is to <strong>develop solutions that make a difference</strong>, 
+                    combining <strong>cutting-edge technology</strong> with 
+                    <strong>economic sustainability</strong>. I believe in innovation that 
+                    transforms and technology that empowers.
+                </p>
+            </div>
+
+            <!-- Image Column -->
+            <div class="about-image">
+                <img src="images/picture2.webp" alt="Roi Caride">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="hidden">
+        <h2>Projects</h2>
+        <div class="projects-grid" itemscope itemtype="http://schema.org/CollectionPage">
+            <!-- Project 1 -->
+            <div class="project-card" itemscope itemtype="http://schema.org/SoftwareSourceCode">
+                <div class="project-header">
+                    <h3 itemprop="name">Financial Market Analyzer</h3>
+                    <a href="https://github.com/roicaride/financial-analyzer" target="_blank" class="github-icon" itemprop="codeRepository">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="project-description" itemprop="description">Advanced financial analysis platform that combines real-time market data with machine learning to predict market trends and provide investment insights.</p>
+                <div class="project-skills">
+                    <span class="skill-tag" itemprop="programmingLanguage">Python</span>
+                    <span class="skill-tag" itemprop="keywords">Pandas</span>
+                    <span class="skill-tag" itemprop="keywords">TensorFlow</span>
+                    <span class="skill-tag" itemprop="keywords">Financial APIs</span>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card" itemscope itemtype="http://schema.org/SoftwareSourceCode">
+                <div class="project-header">
+                    <h3 itemprop="name">EcoSmart City</h3>
+                    <a href="https://github.com/roicaride/ecosmart-city" target="_blank" class="github-icon" itemprop="codeRepository">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="project-description" itemprop="description">Sustainable city management system that optimizes energy consumption, waste management, and traffic flow using IoT sensors and AI algorithms.</p>
+                <div class="project-skills">
+                    <span class="skill-tag" itemprop="keywords">IoT</span>
+                    <span class="skill-tag" itemprop="programmingLanguage">Python</span>
+                    <span class="skill-tag" itemprop="keywords">Arduino</span>
+                    <span class="skill-tag" itemprop="keywords">Cloud Computing</span>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card" itemscope itemtype="http://schema.org/SoftwareSourceCode">
+                <div class="project-header">
+                    <h3 itemprop="name">AR Learning Platform</h3>
+                    <a href="https://github.com/roicaride/ar-learning" target="_blank" class="github-icon" itemprop="codeRepository">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="project-description" itemprop="description">Interactive educational platform using Augmented Reality to create immersive learning experiences for complex subjects like anatomy and physics.</p>
+                <div class="project-skills">
+                    <span class="skill-tag" itemprop="keywords">Unity</span>
+                    <span class="skill-tag" itemprop="programmingLanguage">C#</span>
+                    <span class="skill-tag" itemprop="keywords">AR Foundation</span>
+                    <span class="skill-tag" itemprop="keywords">3D Modeling</span>
+                </div>
+            </div>
+        </div>
+        <!-- Segunda fila de proyectos (repetidos) -->
+        <div class="projects-grid">
+            <!-- Project 1 (repetido) -->
+            <div class="project-card" itemscope itemtype="http://schema.org/SoftwareSourceCode">
+                <div class="project-header">
+                    <h3 itemprop="name">Financial Market Analyzer</h3>
+                    <a href="https://github.com/roicaride/financial-analyzer" target="_blank" class="github-icon" itemprop="codeRepository">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="project-description" itemprop="description">Advanced financial analysis platform that combines real-time market data with machine learning to predict market trends and provide investment insights.</p>
+                <div class="project-skills">
+                    <span class="skill-tag" itemprop="programmingLanguage">Python</span>
+                    <span class="skill-tag" itemprop="keywords">Pandas</span>
+                    <span class="skill-tag" itemprop="keywords">TensorFlow</span>
+                    <span class="skill-tag" itemprop="keywords">Financial APIs</span>
+                </div>
+            </div>
+            
+            <!-- Project 2 (repetido) -->
+            <div class="project-card" itemscope itemtype="http://schema.org/SoftwareSourceCode">
+                <div class="project-header">
+                    <h3 itemprop="name">EcoSmart City</h3>
+                    <a href="https://github.com/roicaride/ecosmart-city" target="_blank" class="github-icon" itemprop="codeRepository">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="project-description" itemprop="description">Sustainable city management system that optimizes energy consumption, waste management, and traffic flow using IoT sensors and AI algorithms.</p>
+                <div class="project-skills">
+                    <span class="skill-tag" itemprop="keywords">IoT</span>
+                    <span class="skill-tag" itemprop="programmingLanguage">Python</span>
+                    <span class="skill-tag" itemprop="keywords">Arduino</span>
+                    <span class="skill-tag" itemprop="keywords">Cloud Computing</span>
+                </div>
+            </div>
+            
+            <!-- Project 3 (repetido) -->
+            <div class="project-card" itemscope itemtype="http://schema.org/SoftwareSourceCode">
+                <div class="project-header">
+                    <h3 itemprop="name">AR Learning Platform</h3>
+                    <a href="https://github.com/roicaride/ar-learning" target="_blank" class="github-icon" itemprop="codeRepository">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="project-description" itemprop="description">Interactive educational platform using Augmented Reality to create immersive learning experiences for complex subjects like anatomy and physics.</p>
+                <div class="project-skills">
+                    <span class="skill-tag" itemprop="keywords">Unity</span>
+                    <span class="skill-tag" itemprop="programmingLanguage">C#</span>
+                    <span class="skill-tag" itemprop="keywords">AR Foundation</span>
+                    <span class="skill-tag" itemprop="keywords">3D Modeling</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" itemscope itemtype="http://schema.org/ContactPage">
+        <h2>Contact Me</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form itemscope itemtype="http://schema.org/ContactPoint">
+                    <div class="form-field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your name" required itemprop="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Your email" required itemprop="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="Message subject" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Your message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon"><i class="fas fa-paper-plane" aria-hidden="true"></i></span>
+                    </button>
+                </form>
+            </div>
+            <div class="contact-info" itemscope itemtype="http://schema.org/Person">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p itemprop="email">roicaride4@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                        <span itemprop="addressLocality">Madrid</span>, 
+                        <span itemprop="addressCountry">Spain</span>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p itemprop="telephone">+34 123 456 789</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/roi-caride-borrajo-1167a4227" target="_blank" class="social-icon" itemprop="sameAs">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="tooltip">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/roicaride" target="_blank" class="social-icon" itemprop="sameAs">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <span class="tooltip">GitHub</span>
+                    </a>
+                    <a href="mailto:roicaride4@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span class="tooltip">Email</span>
+                    </a>
+                    <a href="https://t.me/roicaride" target="_blank" class="social-icon" itemprop="sameAs">
+                        <i class="fab fa-telegram" aria-hidden="true"></i>
+                        <span class="tooltip">Telegram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
   
   <script src="script.js"></script>
 </body>

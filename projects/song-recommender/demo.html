@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Recommender - Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1B98E0;
+            --secondary-color: #13293D;
+            --accent-color: #E8F1F2;
+            --text-color: #333;
+            --card-bg: #fff;
+            --hover-color: #147cbd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .back-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: var(--hover-color);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .search-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .search-box {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--hover-color);
+            box-shadow: 0 0 0 3px rgba(27, 152, 224, 0.3);
+        }
+
+        button {
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .results-section {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .song-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .song-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .song-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .song-title {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .song-artist {
+            color: var(--primary-color);
+        }
+
+        .song-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .detail-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .detail-value {
+            font-weight: bold;
+        }
+
+        .similarity-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .recommendations {
+            margin-top: 2rem;
+        }
+
+        .recommendations h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .song-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Nuevos estilos */
+        .info-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(27, 152, 224, 0.1);
+            border-radius: 12px;
+        }
+
+        .info-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 1rem;
+        }
+
+        .example-selector {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .example-button {
+            padding: 0.5rem 1rem;
+            background: var(--accent-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .example-button:hover,
+        .example-button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .feature-explanation {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .github-link {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--accent-color);
+            border-radius: 8px;
+        }
+
+        .github-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .github-link a:hover {
+            color: var(--hover-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a href="https://roicaride.github.io/">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+        </div>
+        <h1>Song Recommender</h1>
+        
+        <div class="info-section">
+            <h2>How does it work?</h2>
+            <p>This system uses Machine Learning techniques to find similar songs based on musical features like tempo, danceability, energy and more.</p>
+            
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Data Preprocessing</h3>
+                    <p>We clean the data and use K-means clustering to group similar songs, making recommendations faster and more accurate.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>KNN Algorithm</h3>
+                    <p>We use the K-Nearest Neighbors algorithm to find the most similar songs within each cluster.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Similarity Ranking</h3>
+                    <p>Songs are ordered by similarity percentage, showing the most similar ones first.</p>
+                </div>
+            </div>
+
+            <div class="feature-explanation">
+                <h3>Analyzed Features:</h3>
+                <ul>
+                    <li><strong>Year:</strong> Release year of the song</li>
+                    <li><strong>Acousticness:</strong> How acoustic the song is (0-100%)</li>
+                    <li><strong>Artists:</strong> Name of the performing artists</li>
+                    <li><strong>Danceability:</strong> How suitable the song is for dancing (0-100%)</li>
+                    <li><strong>Duration:</strong> Length of the song in milliseconds</li>
+                    <li><strong>Instrumentalness:</strong> How instrumental the song is (0-100%)</li>
+                    <li><strong>Liveness:</strong> Probability of the song being performed live (0-100%)</li>
+                    <li><strong>Loudness:</strong> Overall volume in decibels (dB)</li>
+                    <li><strong>Name:</strong> Title of the song</li>
+                    <li><strong>Popularity:</strong> Song's popularity score (0-100%)</li>
+                    <li><strong>Speechiness:</strong> Presence of spoken words (0-100%)</li>
+                    <li><strong>Tempo:</strong> Speed or rhythm in BPM (beats per minute)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="github-link">
+            <a href="https://github.com/roicaride/SongRecommender" target="_blank">
+                <i class="fab fa-github"></i>
+                View complete project on GitHub
+            </a>
+        </div>
+
+        <div class="search-section">
+            <h2>Example Recommendations</h2>
+            <div class="search-box">
+                <input type="text" id="songSearch" placeholder="Search for a song..." value="Macarena">
+                <button onclick="showResults()">Show Example</button>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <div class="song-card">
+                <div class="song-header">
+                    <div>
+                        <div class="song-title">Macarena</div>
+                        <div class="song-artist">Los Del Rio</div>
+                    </div>
+                </div>
+                <div class="song-details">
+                    <div class="detail-item">
+                        <i class="fas fa-calendar"></i>
+                        <span class="detail-label">Año:</span>
+                        <span class="detail-value">1996</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="detail-label">Popularidad:</span>
+                        <span class="detail-value">59.0%</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span class="detail-label">Duración:</span>
+                        <span class="detail-value">4:09</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-volume-up"></i>
+                        <span class="detail-label">Volumen:</span>
+                        <span class="detail-value">-12.6 dB</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-music"></i>
+                        <span class="detail-label">Tempo:</span>
+                        <span class="detail-value">103.0 BPM</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-dancing"></i>
+                        <span class="detail-label">Bailabilidad:</span>
+                        <span class="detail-value">93.8%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendations">
+                <h2>Recommended Songs</h2>
+                <div class="recommendations-grid">
+                    <!-- Tulsa Time -->
+                    <div class="song-card">
+                        <div class="song-header">
+                            <div>
+                                <div class="song-title">Tulsa Time</div>
+                                <div class="song-artist">Don Williams</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92.6%"></div>
+                        </div>
+                        <div class="progress-text">92.6% similarity</div>
+                        <div class="song-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span class="detail-label">Año:</span>
+                                <span class="detail-value">1978</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-music"></i>
+                                <span class="detail-label">Tempo:</span>
+                                <span class="detail-value">104.4 BPM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-dancing"></i>
+                                <span class="detail-label">Bailabilidad:</span>
+                                <span class="detail-value">92.7%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- I Can't Dance -->
+                    <div class="song-card">
+                        <div class="song-header">
+                            <div>
+                                <div class="song-title">I Can't Dance</div>
+                                <div class="song-artist">Genesis</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88.3%"></div>
+                        </div>
+                        <div class="progress-text">88.3% similarity</div>
+                        <div class="song-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span class="detail-label">Año:</span>
+                                <span class="detail-value">1991</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-music"></i>
+                                <span class="detail-label">Tempo:</span>
+                                <span class="detail-value">107.6 BPM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-dancing"></i>
+                                <span class="detail-label">Bailabilidad:</span>
+                                <span class="detail-value">92.5%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pedro Y Pablo -->
+                    <div class="song-card">
+                        <div class="song-header">
+                            <div>
+                                <div class="song-title">Pedro Y Pablo</div>
+                                <div class="song-artist">Los Tigres Del Norte</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88.3%"></div>
+                        </div>
+                        <div class="progress-text">88.3% similarity</div>
+                        <div class="song-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span class="detail-label">Año:</span>
+                                <span class="detail-value">1984</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-music"></i>
+                                <span class="detail-label">Tempo:</span>
+                                <span class="detail-value">108.9 BPM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-dancing"></i>
+                                <span class="detail-label">Bailabilidad:</span>
+                                <span class="detail-value">87.0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nasty -->
+                    <div class="song-card">
+                        <div class="song-header">
+                            <div>
+                                <div class="song-title">Nasty</div>
+                                <div class="song-artist">Janet Jackson</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 87.4%"></div>
+                        </div>
+                        <div class="progress-text">87.4% similarity</div>
+                        <div class="song-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span class="detail-label">Año:</span>
+                                <span class="detail-value">1986</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-music"></i>
+                                <span class="detail-label">Tempo:</span>
+                                <span class="detail-value">103.7 BPM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-dancing"></i>
+                                <span class="detail-label">Bailabilidad:</span>
+                                <span class="detail-value">84.9%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Rubberband Man -->
+                    <div class="song-card">
+                        <div class="song-header">
+                            <div>
+                                <div class="song-title">The Rubberband Man</div>
+                                <div class="song-artist">The Spinners</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 86.3%"></div>
+                        </div>
+                        <div class="progress-text">86.3% similarity</div>
+                        <div class="song-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span class="detail-label">Año:</span>
+                                <span class="detail-value">1993</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-music"></i>
+                                <span class="detail-label">Tempo:</span>
+                                <span class="detail-value">97.3 BPM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-dancing"></i>
+                                <span class="detail-label">Bailabilidad:</span>
+                                <span class="detail-value">82.0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showExample(song) {
+            // Actualizar botones
+            document.querySelectorAll('.example-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // En una demo real, aquí cambiaríamos los datos mostrados
+            document.getElementById('songSearch').value = song.charAt(0).toUpperCase() + song.slice(1);
+        }
+
+        function showResults() {
+            // This is a static demo
+            alert('This is a static demo. To try the complete recommender, visit the GitHub repository.');
+        }
+    </script>
+</body>
+</html> 

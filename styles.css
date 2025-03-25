@@ -762,6 +762,42 @@ section {
     box-shadow: 0 5px 15px rgba(27, 152, 224, 0.2);
 }
 
+/* Project Link */
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, rgba(27, 152, 224, 0.15), rgba(0, 255, 136, 0.15));
+    border: 2px solid rgba(27, 152, 224, 0.4);
+    border-radius: 25px;
+    color: #1B98E0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(27, 152, 224, 0.15);
+    letter-spacing: 0.5px;
+}
+
+.project-link:hover {
+    background: linear-gradient(45deg, rgba(27, 152, 224, 0.25), rgba(0, 255, 136, 0.25));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(27, 152, 224, 0.3);
+    border-color: rgba(0, 255, 136, 0.5);
+    color: #00ff88;
+}
+
+.project-link i {
+    font-size: 0.85rem;
+    transition: all 0.4s ease;
+}
+
+.project-link:hover i {
+    transform: translateX(5px) rotate(360deg);
+}
+
 /* Responsive Design for Projects */
 @media (max-width: 768px) {
     .projects-grid {

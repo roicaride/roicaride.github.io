@@ -2,7 +2,7 @@
 tsParticles.load("particles-js", {
     particles: {
         number: {
-            value: 300,
+            value: 320,
             density: {
                 enable: true,
                 value_area: 1200
@@ -60,23 +60,12 @@ tsParticles.load("particles-js", {
         detectsOn: "canvas",
         events: {
             onHover: {
-                enable: true,
-                mode: "repulse"
+                enable: false
             },
             onClick: {
-                enable: true,
-                mode: "push"
+                enable: false
             },
             resize: true
-        },
-        modes: {
-            repulse: {
-                distance: 100,
-                duration: 0.3
-            },
-            push: {
-                quantity: 4
-            }
         }
     },
     retina_detect: true
@@ -84,21 +73,6 @@ tsParticles.load("particles-js", {
 
 // Esperar a que el documento esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    // Menú móvil
-    const menuIcon = document.getElementById('menu-icon');
-    const navLinks = document.getElementById('nav-links');
-
-    menuIcon.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-
-    // Cerrar menú al hacer clic en un enlace
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
-    });
-
     // Animaciones de scroll mejoradas
     const observerOptions = {
         root: null,
@@ -143,4 +117,147 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Navegación suave
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            const offset = 80; // Ajuste para el navbar fijo
+            const targetPosition = targetSection.offsetTop - offset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    function updateNavigation() {
+        let currentSection = '';
+        const scrollPosition = window.scrollY + 100; // Ajuste para detección más precisa
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Actualizar en scroll
+    window.addEventListener('scroll', updateNavigation);
+    // Actualizar al cargar la página
+    updateNavigation();
+
+    // Navegación
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-link');
+
+    // Asignar índices para la animación
+    links.forEach((link, index) => {
+        link.style.setProperty('--i', index);
+    });
+
+    // Toggle menú
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navLinksContainer.classList.toggle('active');
+        document.body.classList.toggle('nav-open');
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navLinksContainer.classList.remove('active');
+            document.body.classList.remove('nav-open');
+        });
+    });
 });
+
+// Certificates Modal
+let modal = null;
+let modalImg = null;
+let modalClose = null;
+
+function createModal() {
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <img src="" alt="Certificate">
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        modalImg = modal.querySelector('img');
+        modalClose = modal.querySelector('.modal-close');
+        
+        // Eventos para cerrar el modal
+        modalClose.addEventListener('click', closeCertificateModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeCertificateModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeCertificateModal();
+            }
+        });
+    }
+}
+
+function openCertificateModal(src) {
+    createModal();
+    
+    // Verificar si es el certificado de trading avanzado
+    if (src.includes('certificado trading avanzado')) {
+        const modalContent = modal.querySelector('.modal-content');
+        const basePath = src.substring(0, src.lastIndexOf('/') + 1);
+        modalContent.innerHTML = `
+            <span class="modal-close">&times;</span>
+            <div class="certificate-images">
+                <img src="${src}" alt="Advanced Trading Certificate">
+                <img src="${basePath}certificado trading avanzado_page-0002.jpg" alt="Advanced Trading Certificate - Page 2">
+            </div>
+        `;
+    } else {
+        modalImg.src = src;
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Reasignar los event listeners para el nuevo contenido
+    const newClose = modal.querySelector('.modal-close');
+    if (newClose) {
+        newClose.addEventListener('click', closeCertificateModal);
+    }
+}
+
+function closeCertificateModal() {
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        modalImg.src = '';
+    }
+}
+
+// Inicializar el modal cuando se carga la página
+document.addEventListener('DOMContentLoaded', createModal);

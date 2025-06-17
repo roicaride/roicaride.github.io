@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Scooter Project - Roi Caride</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .project-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            margin-bottom: 4rem;
+            overflow: hidden;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-overlay h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-overlay p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .project-header {
+            text-align: center;
+            margin: -2rem auto 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-header .subtitle {
+            font-size: 1.2rem;
+            color: #34495e;
+            font-style: italic;
+        }
+        
+        .project-section {
+            margin-bottom: 5rem;
+            padding: 2.5rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .project-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-section h2:before {
+            content: "⚡";
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .spec-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        .spec-card h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .spec-card h3:before {
+            content: "🔧";
+            margin-right: 0.5rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .lightbox-nav button {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .linkedin-post {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .linkedin-post:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>') center/cover;
+            opacity: 0.1;
+        }
+        
+        .linkedin-post h3 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .linkedin-post a {
+            display: inline-block;
+            color: #0077b5;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 1rem 2rem;
+            background: #fff;
+            border-radius: 30px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .linkedin-post a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background: #0077b5;
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        ul li:before {
+            content: "→";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background: #2980b9;
+        }
+
+        .back-button i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+            }
+
+            .hero-overlay h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-overlay p {
+                font-size: 1.2rem;
+            }
+
+            .project-content {
+                padding: 1rem;
+            }
+
+            .project-header {
+                padding: 1.5rem;
+                margin-top: -1rem;
+            }
+
+            .project-header h1 {
+                font-size: 2rem;
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .back-button {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="project-content">
+        <div class="hero-section">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="assets/VID-20250610-WA0001.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay">
+                <h1>Electric Scooter Project</h1>
+                <p>From Concept to Reality: A Journey of Innovation and Learning</p>
+            </div>
+        </div>
+
+        <div class="project-header">
+            <p class="subtitle">A hands-on journey into electric vehicle design and engineering</p>
+        </div>
+
+        <div class="project-section">
+            <h2>The Journey</h2>
+            <p>What started as a personal challenge turned into an incredible learning experience. Despite having no prior experience in mechanical engineering or electric vehicle design, I embarked on the journey of building an electric scooter from scratch, starting with a children's scooter frame. This project became a testament to the power of self-directed learning and hands-on engineering.</p>
+            <p>The process was both challenging and incredibly rewarding. Coming from a business and technology background, I had to learn everything from scratch - from understanding electric motor specifications to mastering welding techniques. Each obstacle became an opportunity to learn something new, and the satisfaction of solving these challenges was immense.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Technical Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3>Power System</h3>
+                    <ul>
+                        <li>48V 15Ah Battery Pack</li>
+                        <li>1500W Rear Wheel Motor</li>
+                        <li>Custom Battery Management System</li>
+                        <li>High-efficiency Controller</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h3>Mechanical Components</h3>
+                    <ul>
+                        <li>Custom Solidworks-designed Chassis</li>
+                        <li>16" Front Wheel (Bicycle)</li>
+                        <li>12" Rear Wheel with Traction</li>
+                        <li>Shimano MTB Hydraulic Brakes</li>
+                        <li>Reinforced Frame Structure</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h3>Custom Features</h3>
+                    <ul>
+                        <li>Foldable BMX Handlebar</li>
+                        <li>Custom Central Battery Box</li>
+                        <li>Custom Brake Adaptors</li>
+                        <li>LED Lighting System</li>
+                        <li>Digital Speed Display</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <h2>Design & Manufacturing Process</h2>
+            <p>The project began with extensive research and planning. Despite my lack of experience in mechanical engineering, I dove headfirst into learning CAD design using Solidworks. The learning curve was steep, but incredibly rewarding. Each component was carefully designed and tested virtually before being manufactured.</p>
+            <p>The manufacturing process was a journey in itself:</p>
+            <ul>
+                <li>Learning CAD modeling from scratch to design custom parts</li>
+                <li>Mastering welding techniques for structural integrity</li>
+                <li>Understanding electrical systems and safety protocols</li>
+                <li>Creating custom components with limited tools</li>
+                <li>Rigorous safety testing and optimization</li>
+            </ul>
+            <p>What made this project special was the combination of technical learning and practical problem-solving. Every day brought new challenges, and each solution taught me something valuable about engineering and design.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Challenges & Solutions</h2>
+            <p>As someone with no prior experience in mechanical engineering, I faced numerous challenges that required innovative solutions:</p>
+            <ul>
+                <li>Learning to design a stable frame that could handle the increased power output</li>
+                <li>Understanding and implementing proper electrical safety measures</li>
+                <li>Creating custom adaptors for the braking system without professional tools</li>
+                <li>Optimizing weight distribution for better handling and stability</li>
+                <li>Managing battery placement and protection from environmental factors</li>
+            </ul>
+            <p>Each challenge was an opportunity to learn and grow. The satisfaction of overcoming these obstacles was immense, and the knowledge gained was invaluable.</p>
+        </div>
+
+        <div class="project-section">
+            <h2>Results & Performance</h2>
+            <p>The final product exceeded all expectations. Not only did it perform better than anticipated, but the learning experience was transformative. The scooter achieves impressive speeds while maintaining stability and safety, a testament to the careful planning and execution of the project.</p>
+            <p>What started as a personal challenge became a demonstration of what's possible with determination and a willingness to learn. The custom design elements not only enhance functionality but also give the scooter a unique, professional appearance that reflects the care and attention to detail put into every aspect of the project.</p>
+        </div>
+
+        <div class="linkedin-post">
+            <h3>Check out my LinkedIn post about this project!</h3>
+            <p>I shared the complete journey and more details about the building process, including the challenges and triumphs along the way.</p>
+            <a href="https://www.linkedin.com/posts/roi-caride-borrajo-1167a4227_aunque-mi-camino-profesional-est%C3%A1-m%C3%A1s-ligado-activity-7338648954047270913-Ei6N" target="_blank">View LinkedIn Post →</a>
+        </div>
+
+        <div class="project-section">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(0)">
+                    <img src="assets/IMG-20250610-WA0015.jpg" alt="Final Result">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="assets/IMG-20250610-WA0014.jpg" alt="Construction Process">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="assets/IMG-20250610-WA0012.jpg" alt="Technical Details">
+                </div>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <h2>Lessons Learned</h2>
+            <p>This project reinforced several important principles that extend beyond engineering:</p>
+            <ul>
+                <li>The value of hands-on learning and experimentation</li>
+                <li>How to approach complex problems systematically</li>
+                <li>The importance of safety in DIY projects</li>
+                <li>How to balance innovation with practicality</li>
+                <li>The satisfaction of creating something from scratch</li>
+                <li>The importance of perseverance in the face of challenges</li>
+            </ul>
+            <p>Most importantly, this project showed me that with enough determination and willingness to learn, you can tackle projects outside your comfort zone and succeed. The experience has given me confidence to take on new challenges and has broadened my perspective on what's possible through self-directed learning.</p>
+        </div>
+    </div>
+
+    <!-- Back to Home Button -->
+    <a href="../../index.html" class="back-button">
+        <i class="fas fa-home"></i>
+        <span>Back to Home</span>
+    </a>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img src="" alt="" id="lightbox-img">
+            <div class="lightbox-nav">
+                <button onclick="prevImage()">❮</button>
+                <button onclick="nextImage()">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            'assets/IMG-20250610-WA0015.jpg',
+            'assets/IMG-20250610-WA0014.jpg',
+            'assets/IMG-20250610-WA0012.jpg'
+        ];
+        let currentImageIndex = 0;
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = images[index];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            document.getElementById('lightbox-img').src = images[currentImageIndex];
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentImageIndex];
+        }
+
+        // Close lightbox with escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            }
+        });
+    </script>
+</body>
+</html> 
